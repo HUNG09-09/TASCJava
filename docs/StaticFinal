@@ -1,0 +1,118 @@
+ 1. Thế nào là static?
+   - Từ khóa static được sử dụng để chỉ ra rằng một thành phần thuộc về lớp chứa nó, chứ không phải thuộc về một
+   đối tượngcụ thể nào của lớp đó. Điều này có nghĩa là các đối tượng của lớp chia sẻ chung một bản sao của thành phần
+   static và không cần phải tạo đối tượng mới để truy cập nó.
+   - static áp dụng cho
+    * Biến (Variables)
+    * Phương thức (Methods)
+    * Khối (Blocks)
+    * Lớp (Classes)
+
+ 2. Biến và phương thức static
+   - Biến static:
+     * Khi một biến (variables) được khai báo là static trong Java, chỉ có một bản sao duy nhất
+     của trường đó được tạo ra và chia sẻ giữa tất cả các đối tượng của lớp đó. Bất kể có khởi tạo bao nhiêu
+     đối tượng của một lớp, sẽ luôn chỉ có một bản sao của biến static thuộc về lớp đó. Giá trị của biến static này
+     được chia sẻ giữa tất cả các đối tượng cùng lớp.
+     VD: public class Counter {
+             static int count = 0; // Biến tĩnh dùng để đếm số lượng đối tượng
+
+             // Constructor tăng giá trị của count mỗi khi một đối tượng được tạo ra
+             public Counter() {
+                 count++;
+             }
+
+             public static void main(String[] args) {
+                 // Tạo ba đối tượng của lớp Counter
+                 Counter obj1 = new Counter();
+                 Counter obj2 = new Counter();
+                 Counter obj3 = new Counter();
+
+                 // In ra giá trị của biến count
+                 System.out.println("Số lượng đối tượng đã tạo: " + Counter.count); // Kết quả: 3
+             }
+         }
+
+     * Biến static được lưu trữ trong vùng nhớ heap.
+   - Đặc điểm:
+     * Vì biến static thuộc về lớp nên có thể truy cập chúng trực tiếp thông qua tên lớp mà không cần tham chiếu đối
+       tượng.
+     * Chỉ có thể khai báo biến static ở cấp độ lớp, không thể khai báo bên trong các phương thức, khối mã (blocks),
+       hoặc bên trong các khối if, for.
+     * Có thể truy cập biến static mà không cần khởi tạo đối tượng.
+
+   - Phương thức static
+     * Phương thức static trong Java là phương thức tĩnh của lớp, không thuộc về một đối tượng cụ thể. Chúng có thể
+       được gọi mà không cần tạo ra đối tượng của lớp chứa chúng. Phương thức static giúp thực hiện các thao tác không
+       phụ thuộc vào việc tạo ra các thực thể.
+           public class MathHelper {
+               public static int add(int a, int b) {
+               return a + b;
+           }
+
+           public static void main(String[] args) {
+               int sum = MathHelper.add(3, 5); // Sử dụng phương thức static add()
+               System.out.println(“Tổng của 3 và 5 là: ” + sum); // Kết quả: 8
+           }
+
+   - Đặc điểm phương thức static
+     * Phương thức static không thể truy cập trực tiếp các biến hoặc phương thức non-static của lớp, vì các thành viên
+       không tĩnh thuộc về đối tượng, và phương thức static không có tham chiếu đến đối tượng.
+     * Phương thức static không thể ghi đè.
+     * Phương thức static có thể truy cập các biến tĩnh và gọi các phương thức static khác trong cùng một lớp.
+     * Do phương thức static không liên quan đến bất kỳ đối tượng nào, nên không thể sử dụng từ khóa this hoặc super
+       bên trong phương thức static.
+     * Phương thức trừu tượng không thể là static. vì một phương thức abstract yêu cầu phải có phần cài đặt từ lớp con,
+       trong khi một phương thức static không thể được ghi đè để cung cấp phần cài đặt như vậy.
+
+  3. Truy cập phương thức, thuộc tính static
+     Trong Java, các phương thức và thuộc tính static có thể được truy cập mà không cần tạo đối tượng của lớp, vì chúng
+     thuộc về lớp (class) chứ không phải đối tượng (instance) cụ thể nào
+
+  4. Final
+   - final trong Java được sử dụng để chỉ định rằng một biến, phương thức, hoặc lớp không thể bị thay đổi sau khi đã
+     được xác định. Nó có thể được áp dụng cho các biến, phương thức và lớp để thực thi các hành vi cụ thể
+   - Biến final
+     Khi một biến được khai báo với từ khóa final, giá trị của nó không thể thay đổi sau khi đã được gán.
+     có nghĩa là nó trở thành một hằng số.
+     * Đối với kiểu nguyên thủy:
+         final int a = 100;
+         a = 200; // Lỗi biên dịch: Không thể gán lại giá trị cho biến final
+     * Kiểu object
+         Với các đối tượng, từ khóa final ngăn không cho biến tham chiếu trỏ đến đối tượng khác, nhưng nội dung của đối
+         tượng vẫn có thể bị thay đổi.
+         final StringBuilder sb = new StringBuilder("Hello");
+         sb.append(" World"); // Hợp lệ: Nội dung của đối tượng có thể thay đổi
+         sb = new StringBuilder("New Object"); // Lỗi biên dịch: Không thể gán lại tham chiếu cho biến final
+   - Phương thức final
+     * Khi một phương thức được khai báo là final, nó không thể bị ghi đè (override) trong các lớp con. Điều này giúp bảo
+       vệ việc triển khai phương thức đó khỏi bị thay đổi.
+         class Parent {
+             final void display() {
+                 System.out.println("Phương thức final của lớp cha");
+             }
+         }
+
+         class Child extends Parent {
+             // Lỗi biên dịch: Không thể ghi đè phương thức final
+             void display() {
+                 System.out.println("Ghi đè phương thức final");
+             }
+         }
+     * Một phương thức không thể vừa là abstract vừa là final, vì phương thức abstract cần được ghi đè, trong khi
+       phương thức final thì không thể.
+   - Lớp final
+     * Khi một lớp được khai báo là final, không lớp nào có thể kế thừa từ nó. Điều này thường được sử dụng để
+     bảo vệ các lớp được xem là hoàn chỉnh hoặc cần bảo mật.
+     * Các phương thức bên trong lớp final không bắt buộc phải là final, tuy nhiên, do lớp đã được đánh dấu là final,
+     nên các phương thức đó sẽ không bao giờ bị ghi đè.
+  5. So sánh static và final
+   - Khả năng thay đổi:
+     * static: có thể thay đổi giá trị
+     * final: không thể thay đổi
+   - Thuộc về:
+     * static: chỉ thuộc về lớp
+     * final: thuộc về lớp hoặc đối tượng
+   - Sử dụng:
+     * static: Để chia sẻ giá trị giữa các đối tượng
+     * final: Bảo vệ giá trị không thay đổi

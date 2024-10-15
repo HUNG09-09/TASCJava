@@ -1,0 +1,79 @@
+# Thư mục và tệp của IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+
+# Thư mục và tệp của Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# Thư mục và tệp của NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Thư mục và tệp của VS Code
+.vscode/
+
+# Thư mục biên dịch và tệp biên dịch
+out/
+target/
+build/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+*.class
+
+# Tệp JAR, WAR, EAR
+*.jar
+*.war
+*.ear
+
+# Thư viện tải về
+lib/
+
+# Các tệp log và thư mục logs
+logs/
+*.log
+
+# Tệp cấu hình môi trường
+.env
+*.env
+
+# Tệp tạm thời hoặc backup
+*~
+*.swp
+*.bak
+*.tmp
+
+# Các tệp được tạo bởi công cụ phân tích mã nguồn và kiểm thử
+.sonar/
+jacoco/
+*.exec
+/reports/
+
+# Thư mục cache của hệ điều hành hoặc IDE
+.cache/
+
+# Các tệp hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Tệp kiểm soát phiên bản của các hệ thống khác
+.svn/
+.git/
+.hg/
+.bzr/

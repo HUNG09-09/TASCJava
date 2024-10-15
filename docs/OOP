@@ -1,0 +1,375 @@
+ 1. Các tính chất quan trọng của OOP
+    - Đóng gói (Encapsulation)
+      * Định nghĩa: Đóng gói là việc nhóm các thuộc tính (data) và phương thức (methods) liên quan vào trong một đối
+        tượng, và giới hạn quyền truy cập vào các thành phần đó. Điều này giúp bảo vệ dữ liệu khỏi việc truy cập trái
+        phép và duy trì tính toàn vẹn của dữ liệu.
+      * Thực hiện: Sử dụng các modifier như private, protected, và public để kiểm soát quyền truy cập.
+      * Ví dụ: Một lớp có thể có các biến riêng tư và cung cấp phương thức công khai để truy cập và sửa đổi các biến đó
+    - Kế thừa (Inheritance)
+      * Định nghĩa: Kế thừa là khả năng tạo ra một lớp mới từ một lớp đã tồn tại, trong đó lớp mới (lớp con) sẽ kế thừa
+        các thuộc tính và phương thức của lớp cha.
+      * Lợi ích: Kế thừa giúp tái sử dụng mã, giảm thiểu sự trùng lặp và dễ dàng mở rộng các lớp hiện có.
+      * Ví dụ: Nếu có một lớp Animal, có thể có các lớp con như Dog, Cat kế thừa thuộc tính và phương thức của lớp Animal.
+    - Trừu tượng (Abstraction)
+      * Định nghĩa: Trừu tượng là khả năng ẩn đi các chi tiết cụ thể và chỉ cung cấp thông tin cần thiết cho người dùng.
+        Điều này giúp đơn giản hóa việc sử dụng và giảm thiểu độ phức tạp.
+      * Cách thực hiện: Sử dụng lớp trừu tượng (abstract class) và giao diện (interface) để định nghĩa các phương thức
+        mà các lớp con cần thực hiện.
+      * Ví dụ: Một lớp trừu tượng Vehicle có thể có các phương thức trừu tượng như start() và stop(), và các lớp con
+        như Car, Bike sẽ phải cung cấp triển khai cho các phương thức này.
+    - Đa hình (Polymorphism)
+      * Định nghĩa: Đa hình là khả năng mà một đối tượng có thể được xử lý theo nhiều cách khác nhau. Trong OOP, điều
+        này cho phép một phương thức có thể có nhiều cách thực thi khác nhau, tùy thuộc vào đối tượng mà nó đang làm
+        việc với.
+      * Lợi ích: Linh hoạt, tái sử dụng mã, dễ dàng mở rộng
+      * Ví dụ: thể hiện qua overiding, overloading
+ 2. Access modifier trong java
+    - public
+      * Cho phép truy cập không giới hạn đến thành phần mà nó được áp dụng (biến, phương thức, lớp, hoặc interface)
+        Thành phần được khai báo là public có thể được truy cập từ bất kỳ lớp nào trong cùng một package hoặc từ
+        các package khác.
+      * Sử dụng public cho các thành phần mà muốn chia sẻ với tất cả các lớp.
+    - private
+      * Các thành phần được khai báo là private chỉ có thể được truy cập từ trong chính lớp mà nó được định nghĩa. Điều
+        này giúp bảo vệ dữ liệu và chỉ cho phép truy cập thông qua các phương thức trong lớp đó.
+      * Được sử dụng để ẩn thông tin và tránh truy cập trái phép.
+    - protected
+      * Các thành phần được khai báo là protected có thể được truy cập trong cùng một package và trong các lớp con
+        (subclasses), kể cả khi chúng ở các package khác.
+      * Được sử dụng khi muốn cho phép truy cập từ các lớp con mà không làm cho nó hoàn toàn công khai.
+    - default
+      * Nếu không có access modifier nào được chỉ định, thành phần đó được mặc định là default. Các thành phần này chỉ
+        có thể được truy cập trong cùng một package.
+      * Không thể truy cập từ các package khác, ngay cả khi là lớp con.
+ 3. Phân biệt class và object
+    - class
+      * Class là một bản thiết kế hoặc mẫu cho việc tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức
+        mà các đối tượng của lớp đó sẽ có.
+      * Được khai báo với từ khóa class và chỉ khai báo 1 lần
+      * Class không cấp phát bộ nhớ khi được tạo
+      * VD: Car, Fruit..
+    - object
+      * Instance là một đối tượng cụ thể được tạo ra từ một class. Mỗi instance của một class có thể có các giá trị
+        riêng cho các thuộc tính được định nghĩa trong class đó.
+      * Đối tượng được cấp phát bộ nhớ khi được tạo
+      * Được tạo bằng từ khóa new và có thể khoi tạo nhiều đối tượng
+      * Các phương thức trong class có thể được gọi thông qua các instance
+ 4. Interface và Abstract Class
+    - Interface
+      * Interface là khuôn mẫu, không phải là lớp đối tượng
+      * Phương thức trong interface đều là trừu tuượng
+      * Interface không thể khởi tạo
+      * Một đối tượng implement Interface phải khai báo toàn bộ các phương thức trong interface hoặc khai báo nó là
+        abstract
+      * Interface có thể extend nhau
+      * 1 class có thể implement nhieu interface
+    - Abstract Class
+      * Thường được sử dụng làm cơ sở cho các lớp con
+      * Chứa cả phương thức trừu tượng và phương thức triển khai
+      * Không thể khởi tạo đối tượng
+      * Có chứa các thuộc tính
+      * Không hỗ trợ đa kế thừa
+      * Có hàm constructor, khi một lớp con kế thừa, có thể gọi constructor của lớp abs bằng super()
+        abstract class Animal {
+            String name;
+
+            // Constructor của lớp abstract
+            Animal(String name) {
+                this.name = name;
+                System.out.println("Animal constructor called: " + name);
+            }
+
+            // Phương thức trừu tượng
+            abstract void sound();
+        }
+
+        class Dog extends Animal {
+            // Constructor của lớp con
+            Dog(String name) {
+                super(name); // Gọi constructor của lớp abstract
+            }
+
+            void sound() {
+                System.out.println("Bark");
+            }
+        }
+
+        class Main {
+            public static void main(String[] args) {
+                Dog dog = new Dog("Buddy");
+                dog.sound(); // Kết quả: Bark
+            }
+        }
+        Kết quả: Animal constructor called: Buddy
+                 Bark
+    - Trường hợp sử dụng
+      Abstract Class
+        * Khi một nhóm lớp có liên quan với một số hành vi và thuộc tính chung
+          VD: Giả sử bạn có một hệ thống quản lý động vật với các loại động vật khác nhau như Dog, Cat, và Bird. Bạn có
+              thể tạo một abstract class Animal với các thuộc tính chung như name và age.
+        * Abstract class có thể chứa cả phương thức đã cài đặt, cho phép cung cấp một số hành vi mặc định mà các lớp
+          con có thể sử dụng hoặc ghi đè.
+          VD: Trong một ứng dụng đồ họa, bạn có thể có một abstract class Shape với phương thức draw() là abstract và
+              phương thức resize() có cài đặt mặc định.
+
+            abstract class Shape {
+                abstract void draw(); // Phương thức trừu tượng
+
+                void resize() { // Phương thức đã cài đặt
+                    System.out.println("Resizing shape.");
+                }
+            }
+
+      Interface
+        * Khi một nhóm lớp khác nhau thực hiện một tập hợp các phương thức,
+          VD: Giả sử có các lớp như Bird, Fish, và Mammal và muốn tất cả các lớp này đều có một phương thức move().
+              Có thể tạo một interface Movable.
+              interface Movable {
+                  void move(); // Tất cả các phương thức trong interface đều là abstract
+              }
+
+              class Bird implements Movable {
+                  public void move() {
+                      System.out.println("Flying");
+                  }
+              }
+
+              class Fish implements Movable {
+                  public void move() {
+                      System.out.println("Swimming");
+                  }
+              }
+        * Interface cho phép một lớp thực hiện nhiều interface khác nhau, cung cấp tính năng đa kế thừa.
+          VD: Một lớp Smartphone có thể cần thực hiện nhiều chức năng như Call, Camera, và GPS. Có thể định nghĩa
+              các interface riêng cho mỗi chức năng và để lớp Smartphone thực hiện tất cả các interface đó.
+ 5. Tình huống
+    - Khi một lớp kế thừa từ hai interface và cả hai có một phương thức cùng tên, cùng kiểu trả về và 1 class implement
+      cả hai interface này. Bởi vì Java không cho phép có nhiều hơn một phương thức cùng tên trong một
+      lớp mà không có sự khác biệt rõ ràng (như khác tham số)). Nên class đó cần cài đặt phương thức này và sử dụng bình
+      thường
+      VD: public interface InterfaceA {
+              void display();
+          }
+
+          public interface InterfaceB {
+              void display();
+          }
+
+          public class Test implements InterfaceA, InterfaceB {
+
+              @Override
+              public void display() {
+                  System.out.println("OK");
+              }
+          }
+
+          // chương trình không có lỗi xảy ra
+          public static void main(String[] args) {
+                  Test test = new Test();
+                  test.display(); // OK
+          }
+
+    - Trong trường hợp các phương thức trong hai interface có cùng tên nhưng khác kiểu trả về, điều này sẽ gây ra lỗi
+      biên dịch. Java không cho phép phương thức trùng tên với kiểu trả về khác trong cùng một lớp.
+
+    - Khi một lớp kế thừa từ một abstract class và một interface có phương thức cùng tên:
+      * Nếu phương thức trong abstract class đã có cài đặt, lớp kế thừa sẽ tự động kế thừa cài đặt đó. Lớp con có thể
+        ghi đè phương thức này nếu cần, nhưng không bắt buộc.
+
+              // display() đã được triển khai
+              public abstract class Abstract {
+                   void display() {
+                   System.out.println("Abstract");
+                   };
+              }
+
+              public interface InterfaceA {
+                  void display();
+              }
+
+              // display() được ghi đè
+              public class Test  extends Abstract implements InterfaceA {
+                  @Override
+                  public void display() {
+                      System.out.println("Display from test");
+                  }
+              }
+
+              // Do display() đã được ghi đè nên kết quả in ra sẽ theo phương thức đã ghi đè
+              public static void main(String[] args) {
+                      Test test = new Test();
+                      test.display(); // Display from test
+              }
+
+      * Nếu cả phương thức display() trong Abstract Class cũng trừu tượng
+        Nếu phương thức trong abstract class là phương thức trừu tượng (không có cài đặt), lớp con buộc phải cài đặt
+        phương thức đó. Trong trường hợp này, không có sự mâu thuẫn giữa các phương thức, và lớp con có thể tự do định
+        nghĩa hành vi.
+            // display() đã được triển khai
+              public abstract class Abstract {
+                  abstract void display()
+              }
+
+              public interface InterfaceA {
+                  void display();
+              }
+
+              // display() được ghi đè
+              public class Test  extends Abstract implements InterfaceA {
+                  @Override
+                  public void display() {
+                      System.out.println("Display from test");
+                  }
+              }
+
+              // Do display() đã được ghi đè nên kết quả in ra sẽ theo phương thức đã ghi đè
+              public static void main(String[] args) {
+                      Test test = new Test();
+                      test.display(); // Display from test
+              }
+      * Nếu lớp con không ghi đè phương thức display() từ abstract class và phương thức đó có cài đặt, phương thức từ
+        abstract class sẽ được sử dụng.
+                public abstract class Abstract {
+                     public void display() {
+                         System.out.println("Abstract");
+                     };
+                }
+
+                public interface InterfaceA {
+                    void display();
+                }
+
+                public class Test extends Abstract implements InterfaceA {
+
+                }
+
+                public static void main(String[] args) {
+                      Test test = new Test();
+                      test.display(); // Abstract
+                }
+      * Nếu phương thức không có cài đặt, trình biên dịch sẽ báo lỗi vì lớp con phải cài đặt phương thức trừu tượng.
+
+    - Kết luận
+      * Nếu hai phương thức có cùng tên và cùng kiểu trả về: Lớp thực hiện sẽ cài đặt phương thức một lần cho cả hai
+      interface hoặc ghi đè từ abstract class nếu cần.
+
+      * Nếu hai phương thức có cùng tên nhưng khác kiểu trả về: Java sẽ báo lỗi biên dịch vì không thể có hai phương thức
+      cùng tên với kiểu trả về khác nhau trong cùng một lớp.
+
+ 6. Overriding và Overloading
+    - Overloading
+      * Định nghĩa nhiều phương thức cùng tên nhưng khác nhau về tham số (số lượng, kiểu dữ liệu)
+      * Khi được gọi,dựa vào tham số truyền vào, phương thức tương ứng sẽ được gọi
+    - Overriding
+      * Là hai phương thức cùng tên, cùng tham số, cùng kiểu trả về, nhưng lớp con cung cấp một triển khai khác lớp cha
+ 7. Một function có access modifier là private or static có thể overriding được không?
+    - Private method không thể bị overriding. Vì các phương thức private chỉ có thể truy cập được trong chính lớp mà
+      chúng được khai báo, nên không thể kế thừa hoặc ghi đè (override) từ lớp con.
+    - Static method cũng không thể bị overriding. Khi bạn khai báo một phương thức là static, nó thuộc về lớp (class)
+      chứ không phải đối tượng (instance), và nó không tham gia vào quá trình đa hình (polymorphism). Nếu bạn định
+      nghĩa lại một phương thức static trong lớp con, điều đó được coi là method hiding chứ không phải overriding.
+
+         class Parent {
+             // Phương thức có thể bị overriding
+             public void display() {
+                 System.out.println("Hiển thị từ lớp cha.");
+             }
+
+             // Phương thức static (method hiding)
+             public static void staticMethod() {
+                 System.out.println("Phương thức static từ lớp cha.");
+             }
+
+             // Phương thức private (không thể overriding)
+             private void privateMethod() {
+                 System.out.println("Phương thức private từ lớp cha.");
+             }
+         }
+
+         class Child extends Parent {
+             // Overriding phương thức display
+             @Override
+             public void display() {
+                 System.out.println("Hiển thị từ lớp con.");
+             }
+
+             // Hiding phương thức static
+             public static void staticMethod() {
+                 System.out.println("Phương thức static từ lớp con.");
+             }
+
+             // Không thể overriding phương thức privateMethod do nó là private trong lớp cha
+         }
+
+         public class Main {
+             public static void main(String[] args) {
+                 Parent parent = new Parent();
+                 Child child = new Child();
+
+                 // Gọi phương thức display
+                 parent.display(); // Kết quả: "Hiển thị từ lớp cha."
+                 child.display();  // Kết quả: "Hiển thị từ lớp con."
+
+                 // Gọi phương thức static
+                 Parent.staticMethod(); // Kết quả: "Phương thức static từ lớp cha."
+                 Child.staticMethod();  // Kết quả: "Phương thức static từ lớp con."
+             }
+         }
+
+ 8. Một phương thức final có thể kế thừa được không ?
+    Một phương thức final không thể bị overriding. Khi một phương thức được khai báo với từ khóa final, nó có nghĩa là
+    lớp con không thể thay đổi hành vi của phương thức đó. Điều này được sử dụng để ngăn chặn việc ghi đè và bảo vệ
+    tính toàn vẹn của phương thức
+        // Lớp cha
+        class Parent {
+            // Phương thức final (không thể bị overriding)
+            public final void showMessage() {
+                System.out.println("Thông điệp từ lớp cha.");
+            }
+
+            // Phương thức non-final (có thể bị overriding)
+            public void display() {
+                System.out.println("Hiển thị từ lớp cha.");
+            }
+        }
+
+        // Lớp con kế thừa từ lớp cha
+        class Child extends Parent {
+            // Không thể overriding phương thức showMessage vì nó là final
+            // @Override
+            // public void showMessage() {
+            //     System.out.println("Thông điệp từ lớp con.");
+            // }
+
+            // Overriding phương thức display
+            @Override
+            public void display() {
+                System.out.println("Hiển thị từ lớp con.");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Parent parent = new Parent();
+                Child child = new Child();
+
+                // Gọi phương thức showMessage
+                parent.showMessage(); // Kết quả: "Thông điệp từ lớp cha."
+                child.showMessage();  // Kết quả: "Thông điệp từ lớp cha."
+
+                // Gọi phương thức display
+                parent.display(); // Kết quả: "Hiển thị từ lớp cha."
+                child.display();  // Kết quả: "Hiển thị từ lớp con."
+            }
+        }
+
+ 9. this va super
+    - this tham chiếu đến đối tượng hiện tại của lớp, trong khi super tham chiếu đến lớp cha của đối tượng.
+    - this dùng để gọi constructor và phương thức khác trong cùng lớp, còn super dùng để gọi constructor và phương
+      thức của lớp cha.
+    - this giúp phân biệt biến instance với tham số trùng tên, còn super dùng để truy cập các thành phần của lớp cha
+      bị lớp con che khuất (overridden).
+
+
+
+

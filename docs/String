@@ -1,0 +1,121 @@
+1. Đặc điểm và tính chất của String
+ - Immutable (Không thay đổi) : khi một đối tượng String được tạo ra, nó không thể bị thay đổi.
+   Mọi thao tác biến đổi chuỗi (như cắt, nối, thay thế, v.v.) sẽ tạo ra một đối tượng String mới.
+   VD:
+   String str = "Hello";
+   str = str + " World"; // Tạo một đối tượng mới
+ - Được lưu trữ trong heap và pool
+   * Các đối tượng String được lưu trữ trong bộ nhớ heap.
+   * Java sử dụng String Pool để tối ưu hóa việc sử dụng bộ nhớ. Khi tạo một chuỗi bằng cách sử dụng dấu nháy kép ("..."),
+     Java sẽ kiểm tra xem chuỗi đã tồn tại trong String Pool chưa. Nếu có, nó sẽ sử dụng tham chiếu đến chuỗi đã tồn tại
+     thay vì tạo một đối tượng mới.
+     VD:
+     String s1 = "Hello";
+     String s2 = "Hello"; // s1 và s2 trỏ đến cùng một đối tượng trong String Pool
+     System.out.println(s1 == s2); // true
+ - String trong Java hỗ trợ Unicode, cho phép làm việc với các ký tự từ nhiều ngôn ngữ khác nhau.
+ - Các phương thức
+   * length(): Trả về độ dài của chuỗi.
+   * charAt(int index): Lấy ký tự tại vị trí chỉ định.
+   * substring(int start, int end): Trả về một phần của chuỗi.
+           String originalString = "Hello, World!";
+
+           // Lấy một phần của chuỗi từ chỉ số 7 đến 12 (Không bao gồm chỉ số 12)
+           String subString = originalString.substring(7, 12);
+
+           System.out.println("Chuỗi gốc: " + originalString); // "Hello, World!"
+           System.out.println("Chuỗi con: " + subString); // "World"
+   * indexOf(String str): Trả về chỉ số của lần xuất hiện đầu tiên của chuỗi con.
+           String originalString = "Hello, World!";
+
+           // Tìm chỉ số của chuỗi con "World"
+           int index = originalString.indexOf("World");
+
+           // Tìm chỉ số của chuỗi con "Java" (không tồn tại trong chuỗi)
+           int notFoundIndex = originalString.indexOf("Java");
+
+           System.out.println("Chỉ số của 'World': " + index); // 7
+           System.out.println("Chỉ số của 'Java': " + notFoundIndex); // -1
+   * toUpperCase() và toLowerCase(): Chuyển đổi chữ hoa/chữ thường.
+   * trim(): Loại bỏ khoảng trắng ở đầu và cuối chuỗi.
+
+2. Cách để tạo 1 biến String
+ - Sử dụng String Literal : String s = "syhung";
+ - Sử dụng new: String s = new String("Syhung");
+   JVM sẽ tạo ra một đối tượng string mới như một đối tượng trong bộ nhớ HEAP và
+   chữ "Syhung" sẽ được đặt trong Pool. Biến s sẽ tham chiếu tối đối tượng được tạo ra trong HEAP.
+ - Khởi tạo từ mảng kí tự
+   char[] charArray = {'H', 'u', 'n', 'g'};
+   String s = new String(charArray);
+ - Sử dụng StringBuilder
+   StringBuilder sb = new StringBuilder();
+   sb.append("Sy");
+   sb.append("Hung");
+   String s = sb.toString(); // "SyHung"
+ - Sử dụng String.format()
+   String name = "Hung";
+   String s = String.format("Sy%s", name); // "SyHung"
+3. String pool
+ - String pool là
+   * String pool là một vùng nhớ đặc biệt nằm trong vùng nhớ Heap (Heap memory),
+     dùng để lưu trữ các biến được khai báo theo kiểu String.
+   * String pool giúp tối ưu hoá việc lưu trữ và sử dụng vùng nhớ khi khai báo biến String,
+     giúp hạn chế tình trạng tràn bộ nhớ Java Heap Space.
+ - Cách hoạt động
+   * Khi khởi tạo một chuỗi bằng cách sử dụng literals, chuỗi đó được lưu trữ trong String Pool
+   String str1 = "Hello";
+   String str2 = "Hello"; // str2 trỏ đến cùng một đối tượng trong String Pool
+   str1 == str2 // true
+   * Khi tạo một đối tượng String bằng từ khóa new, đối tượng này sẽ không được lưu trong String Pool
+   String str3 = new String("Hello"); // Tạo một đối tượng mới trong Heap, không trong String Pool
+   str1 == str3 // false
+
+   Khi một chuỗi được tạo bằng cách sử dụng literals, Java sẽ kiểm tra xem chuỗi đó đã tồn tại trong pool chưa.
+   Nếu có, nó sẽ trả về tham chiếu đến đối tượng đã tồn tại; nếu không, nó sẽ tạo một đối tượng mới và lưu vào pool.
+   Ngược lại, khi tạo chuỗi bằng từ khóa new, một đối tượng mới sẽ được tạo trong Heap mà không liên quan đến String Pool.
+4. So sánh 2 chuoi
+ - Sử dụng toán tử ==
+   So sánh tham chiếu của 2 đối tượng, kiểm tra xem hai biến có trỏ đến cùng một đối tượng trong bộ nhớ hay không
+      String str1 = "Hello";
+      String str2 = "Hello";
+      String str3 = new String("Hello"); // Tạo một đối tượng mới trong Heap, không trong String Pool
+      str1 == str3 // false
+      str1 == str2 // true
+ - Sử dụng phương thức equals()
+   So sánh nội dung của hai chuỗi. Nó trả về true nếu hai chuỗi có nội dung giống nhau và false nếu không.
+      String str1 = "Hello";
+      String str2 = "Hello";
+      String str3 = new String("Hello");
+
+      System.out.println(str1.equals(str2)); // true
+      System.out.println(str1.equals(str3)); // true
+5. Tìm hiểu về StringBuilder
+ - StringBuilder  được sử dụng để tạo và thao tác với chuỗi có thể thay đổi (mutable). So với String,
+   StringBuilder cho phép bạn thực hiện các phép toán trên chuỗi mà không tạo ra nhiều đối tượng chuỗi mới,
+   giúp tiết kiệm bộ nhớ và cải thiện hiệu suất trong các tình huống cần thay đổi chuỗi nhiều lần
+ - Tạo đối tượng StringBuilder
+   StringBuilder sb1 = new StringBuilder(); // Tạo một StringBuilder rỗng
+   StringBuilder sb2 = new StringBuilder("Hello"); // Tạo với một chuỗi khởi tạo
+   StringBuilder sb3 = new StringBuilder(50); // Tạo với dung lượng ban đầu
+ - Phương thức thao tác
+   * append(String str): Nối một chuỗi vào cuối StringBuilder.
+   * insert(int offset, String str): Chèn một chuỗi vào vị trí chỉ định.
+   * delete(int start, int end): Xóa các ký tự từ vị trí start đến end.
+   * replace(int start, int end, String str): Thay thế các ký tự trong khoảng từ start đến end bằng một chuỗi khác.
+     // Tạo một đối tượng StringBuilder và thêm nội dung
+        StringBuilder sb = new StringBuilder("Hello, World!");
+     // In ra nội dung ban đầu
+        System.out.println("Nội dung ban đầu: " + sb.toString());  // Hello, World!
+     // Thay thế phần chuỗi
+        sb.replace(7, 12, "Java");
+     // In ra nội dung sau khi thay thế
+        System.out.println("Nội dung sau khi thay thế: " + sb.toString()); // Hello, Java!
+   * reverse(): Đảo ngược nội dung của StringBuilder.
+   * toString(): Chuyển đổi StringBuilder thành chuỗi String.
+     // Tạo một đối tượng StringBuilder và thêm nội dung
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World!");
+     // Chuyển đổi StringBuilder thành String
+        String result = sb.toString();
+     // In ra kết quả
+        System.out.println(result); // Hello World!

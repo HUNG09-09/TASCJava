@@ -1,0 +1,49 @@
+ 1. Phân biệt kiểu dữ liệu nguyên thủy và kiểu dữ liệu object.
+  - Kiểu dữ liệu nguyên thủy
+    int a1 = 10;
+    char c1 = 'a';
+     * Là các kiểu như: int, float, char, boolean…
+     * Được lưu trữ trực tiếp trong stack, không thể là null
+     * Không có phương thức hay thuộc tính
+     * Không hỗ trợ kế thừa và đa hình
+
+  - Kiểu Object
+    ArrayList<String> names = new ArrayList<>();
+    String name = "Hung";
+     * Là kiểu dữ liệu tham chiếu, không thể lưu trực tiếp giá trị mà chỉ lưu trữ địa chỉ tham chiếu đến vùng nhớ chứa đối tượng
+     * Bao gồm String, Wrapper Classes (Integer, Double, Character, Boolean), ArrayList…
+     * Có thuộc tính và phương thức đi kèm
+     * Có thể null
+
+
+ 2. Chuyển đổi dữ liệu
+  - Chuyển đổi từ kiểu bé hơn sang kiểu lớn hơn, tự động Implicit Casting
+    int a2 = 10;
+    long b2 = a2;  int -> long
+    double c2 = b2;  long -> double
+
+  - Chuyển đổi từ kiểu lớn hơn sang kieu bé hơn, thủ công Explicit Casting
+    double d2 = 9.78;
+    int e2 = (int) d2;  double -> int
+
+  - Chuyển từ kiểu nguyên thủy sang Object và ngược lại
+    Autoboxing
+      int primitiveInt = 42;
+      Integer objectInt = primitiveInt; // Tự động chuyển đổi int -> Integer
+    Unboxing
+      Integer objectInt2 = Integer.valueOf(100);
+      int primitiveInt2 = objectInt2; // Tự động chuyển đổi Integer -> int
+
+
+ 3. So sánh 2 kiểu dữ liệu với nhau
+    Khi bạn so sánh một kiểu nguyên thủy với một kiểu đối tượng,
+    Java sẽ chuyển đổi kiểu đối tượng thành kiểu nguyên thủy tương ứng (nếu kiểu đối tượng là một lớp wrapper
+
+
+ 4. Giá trị khởi tạo
+    Kiểu nguyên thủy: Khi khởi tạo, chúng có giá trị mặc định cụ thể
+    - int : 0
+    - boolean : false
+    - char : kí tự rỗng
+
+    Kiểu Object: giá trị mặc định là null nếu không khởi tạo giá trị cụ thể
